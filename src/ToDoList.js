@@ -14,6 +14,7 @@ export default class ToDoList extends Component {
         this.AddNewTask = this.AddNewTask.bind(this);
         this.updateDone = this.updateDone.bind(this);
         this.deleteDone = this.deleteDone.bind(this);
+        
     }
 
     handleChange(event) {
@@ -24,8 +25,8 @@ export default class ToDoList extends Component {
         localStorage.setItem('to-do-list', JSON.stringify(this.state.list));
     };
 
-    AddNewTask() { 
-        if (this.state.task !== '') {
+    AddNewTask(key, isKey=false) { 
+        if ((this.state.task !== '' && !isKey) || (this.state.task !== '' && key === 13)) {
             this.setState((state) => ({
                 list: [...state.list, {taskText: state.task, done: false}],
                 task: '',
@@ -53,7 +54,7 @@ export default class ToDoList extends Component {
             <div className="todo">
                 <fieldset>
                     <legend>To-Do List</legend>
-                    <input type="text" value = {this.state.task} onChange={this.handleChange} className="todo__input" />
+                    <input type="text" value = {this.state.task} onChange={this.handleChange} onKeyDown={(event) => this.AddNewTask(event.keyCode, true)} className="todo__input" />
                     <button onClick={this.AddNewTask} className="todo__button">Add new task</button>
                     <ul className="todo__list">
                         {this.state.list.map((taskItem, index) => 
