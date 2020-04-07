@@ -1,0 +1,52 @@
+.todo {
+    display: flex;
+    
+    &__list {
+        list-style-type: circle;
+    }
+
+    &__list-item {
+        text-align: start;
+        &--done{
+            text-decoration: line-through;
+            color: #555e6e;
+        }
+    }
+
+    &__list-task {
+        cursor: pointer;
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__input {
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        height: 25px;
+        padding: 0 3px;
+        font-family: sans-serif;
+        font-size: 16px;
+        color: #282c34;
+    }
+
+    &__button {
+        border: none;
+        color: #282c34;
+        font-family: sans-serif;
+        font-size: 16px;
+        padding: 0 6px;
+        outline: none;
+        transition: background-color 0.3s, color 0.3s;
+        height: 25px;
+        &:active {
+          background-color: rgb(12, 12, 12);
+          color: white;
+        }
+        background-color: #61dafb;
+        border-radius: 5px;
+    }
+
+}
